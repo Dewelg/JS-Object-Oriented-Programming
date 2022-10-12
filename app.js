@@ -13,112 +13,75 @@ class Person{
 
     removeHobby(hobby){
         let index = this.hobbies.indexOf(hobby);
-        this.hobbies.slice(index);
+        let valuesBefore = this.hobbies.slice(0, index);
+        let valuesAfter = this.hobbies.slice(index + 1);
+        this.hobbies = valuesBefore.concat(valuesAfter);
+        
     }
 
     greeting(){
         console.log(`Hello fellow person`);
     }
+
+    info(){
+        return Object.entries(this).toString();
+}
 }
 
 //part2
 class Coder extends Person{
-    constructor(){
-        super();
-        this.occupation = "Full Stack Web Developer";
+    constructor(name, pets, residence, hobbies, occupation){
+        super(name, pets, residence, hobbies);
+        this.occupation = occupation ;
         
     }
 
     greeting(){
-        console.log(`Hello my name is ${this.name} I am a ${this.occupation}`);
+        console.log(`Hello I am a coder`);
     }
 }
 
 //part3
-let man = new Coder("Dewel");
-let work = new Coder("Web Developer");
-
-console.log(man.greeting());
-console.log(work.greeting());
-
-
+let coder = new Coder(
+    "Dewel", 
+    0, 
+    "New York", 
+    ["reading", "working out", "writing"],
+    "Full Stack Web Developer"
+    );
+    coder.addHobby("MMA")
+    console.log(coder);
+    coder.removeHobby("writing");
+    console.log(coder);
+    console.log(coder.info())
 //part4
-//idea1
 class Calculator{
-    constructor(result){
-        result = 0;
-    }
+    result = 0;
 
     add(a, b){
-        if (a + b){
-            result = a + b;
-            return result;
-        }
-
+      this.result = a+b;
+			return this.result;
     }
     subtract(a, b){
-        if (a - b){
-            result = a - b;
-            return result;
-        }
+       this.result = a-b;
+			return this.result;
     }
     divided(a, b){
-        if (a % b){
-            result = a % b;
-            return result;
-        }
+        this.result = a/b;
+			return this.result;
     }
     multiply(a, b){
-        if (a * b){
-            result = a * b;
-            return result;
-        }
-    }
+				this.result = a*b;
+			return this.result;
+		}
+		
+		display(){
+			console.log(this.result);
+	}
 }
 
 
 
-//idea2
-class Calculator{
-    constructor(result, number1, number2){
-        this.result = result;
-        this.number1 = number1;
-        this.number2 = number2;
-    }
-
-    add(number1, number2){
-        if (number1 + number2){
-            result = number1 + number2;
-            return result;
-        }
-
-    }
-    subtract(number1, number2){
-        if (number1 - number2){
-            result = number1 - number2;
-            return result;
-        }
-    }
-    divided(number1, number2){
-        if (number1 % number2){
-            result = number1 % number2;
-            return result;
-        }
-    }
-    multiply(number1, number2){
-        if (number1 * number2){
-            result = number1 * number2;
-            return result;
-        }
-    }
-
-    displayResult(){
-        console.log(this.add);
-        console.log(this.subtract);
-        console.log(this.divided);
-        console.log(this.multiply);
-    }
-}
 
 
 
